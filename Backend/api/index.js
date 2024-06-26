@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin:["https://deploy-mern-1whq.vercel.app"],
+  origin:["https://vercel.com/saksham0235s-projects/task-management-frontend/6NQz8dViqEXQa5gPRrSrxELFPgR4"],
   methods:["Post","GET"],
   credentials:true
 }));
