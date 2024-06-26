@@ -5,10 +5,12 @@ import TaskDetail from './TaskDetail';
 
 const TaskPage = () => {
     const {id}=useParams();
+    
     console.log(id,"From taskpage");
   return (
     <div>
       {id ?<TaskDetail/>:<TaskForm/>}
+
 
     </div>
   )

@@ -7,17 +7,22 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin:["https://deploy-mern-1whq.vercel.app"],
+  methods:["Post","GET"],
+  credentials:true
+}));
 
 mongoose
-  .connect("mongodb://localhost:27017/Taskmanagement")
+  // .connect("mongodb://localhost:27017/Taskmanagement")
+  .connect("mongodb+srv://ssaksham952:s7iTUarAX4kj7khA@cluster0.ueqgcrv.mongodb.net/")
   .then(() => console.log("Connected to database"))
   .catch((e) => console.log("Error in connecting with database", e));
 
 const TaskSchema = new mongoose.Schema({
   title: String,
   description: String,
-  duedate: { type: Date, default: null }
+  duedate: { type: Date}
 });
 
 const Task = mongoose.model("Task", TaskSchema);

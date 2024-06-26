@@ -6,8 +6,6 @@ import { Card } from 'antd';import './task.css'
 const TaskDetail = () => {
     const [task, setTask] = useState(null)
     const { id } = useParams()
-    console.log(id, "From taskDetail");
-    console.log(task, "FRom taskdetail");
     const navigate = useNavigate()
 
     const fetchTask = async () => {
@@ -38,6 +36,17 @@ const TaskDetail = () => {
     }
 
     if (!task) return <div>Loading...</div>;
+    const date=task?.duedate;
+    console.log(date,"From detail");
+    let newdate = new Date(date);
+    newdate.setDate(newdate.getDate());
+    let monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    let monthName = monthNames[newdate.getMonth()];
+    let day = newdate.getDate();
+    let formattedDate = `${monthName} ${day}`;
     return (
         <div>
             <center><h1>TASK DETAILS</h1></center>
@@ -50,7 +59,7 @@ const TaskDetail = () => {
             >
                 <h2>Title : {task.title}</h2>
                 <p>Description : {task.description}</p>
-                <p>Due Date : {task.dueDate}</p>
+                <p>Due Date : {formattedDate}</p>
                 <div style={{display:'flex',width:'300px',justifyContent:'space-between',marginTop:'5px'}}>
                 <Link to={`/edit/${task._id}`}><button className='cancelbutton'>Edit</button></Link>
                 <button onClick={deleteTask} className='deletebtn'>Delete</button>

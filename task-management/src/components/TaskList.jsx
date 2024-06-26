@@ -25,6 +25,8 @@ const TaskList = () => {
     useEffect(() => {
         fetchTasks()
     }, [])
+    const date=new Date()
+    console.log(date,"from date");
     return (
         <>
             {
