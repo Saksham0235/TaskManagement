@@ -14,7 +14,7 @@ app.use(cors({
 }));
 
 mongoose
-  // .connect("mongodb://localhost:27017/Taskmanagement")
+
   .connect("mongodb+srv://ssaksham952:s7iTUarAX4kj7khA@cluster0.ueqgcrv.mongodb.net/")
   .then(() => console.log("Connected to database"))
   .catch((e) => console.log("Error in connecting with database", e));
